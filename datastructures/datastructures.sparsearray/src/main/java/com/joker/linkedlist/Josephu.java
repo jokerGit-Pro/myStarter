@@ -1,10 +1,14 @@
 package com.joker.linkedlist;
 
+/** 约瑟夫环形链表 */
 public class Josephu {
   public static void main(String[] args) {
-      CircleSingleLinkedList circleSingleLinkedList = new CircleSingleLinkedList();
-      circleSingleLinkedList.addBoy(30);
-      circleSingleLinkedList.showBoy();
+    CircleSingleLinkedList circleSingleLinkedList = new CircleSingleLinkedList();
+    circleSingleLinkedList.addBoy(5);
+    circleSingleLinkedList.showBoy();
+
+    circleSingleLinkedList.countBoy(1,2,5);
+
   }
 }
 
@@ -17,7 +21,7 @@ class CircleSingleLinkedList {
       System.out.println("nums不能小于2");
       return;
     }
-    Boy curBoy = null;//辅助指针
+    Boy curBoy = null; // 辅助指针
     for (int i = 1; i <= nums; i++) {
       Boy boy = new Boy(i);
       if (i == 1) {
@@ -45,6 +49,39 @@ class CircleSingleLinkedList {
       }
       curBoy = curBoy.getNext();
     }
+  }
+
+  /**
+   * @param startNo 表示从第几个小孩数数
+   * @param countNum 数几下
+   * @param nums 最初有几个节点(小孩)节点在圈中
+   */
+  public void countBoy(int startNo, int countNum, int nums) {
+    if (first == null || startNo < 0 || startNo > nums) {
+      System.out.println("数据不科学");
+      return;
+    }
+    // 创建一个辅助指针
+    Boy helper = first;
+    while (true) {
+      if (helper.getNext() == first) {
+        break;
+      }
+      helper = helper.getNext();
+    }
+    while (true) {
+      if (helper == first) {
+        break;
+      }
+      for (int i = 0; i < countNum - 1; i++) {
+        first=first.getNext();
+        helper=helper.getNext();
+      }
+      System.out.printf("boy%d出圈 \n",first.getNo());
+      first=first.getNext();
+      helper.setNext(first);
+    }
+    System.out.printf("最后留在圈中的小孩是%d \n",first.getNo());
   }
 }
 
