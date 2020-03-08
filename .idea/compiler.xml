@@ -6,16 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="datastructures-sparsearray" />
+        <module name="datastructure" />
         <module name="diy-starter" />
+        <module name="java8" />
         <module name="joker-spring-boot-starter" />
         <module name="joker-spring-boot-starter-autoconfigurer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="datastructure" target="1.8" />
       <module name="datastructures" target="1.8" />
-      <module name="datastructures-sparsearray" target="1.8" />
       <module name="diy-starter" target="1.8" />
+      <module name="java8" target="1.8" />
       <module name="joker-spring-boot-starter" target="1.8" />
       <module name="joker-spring-boot-starter-autoconfigurer" target="1.8" />
     </bytecodeTargetLevel>
